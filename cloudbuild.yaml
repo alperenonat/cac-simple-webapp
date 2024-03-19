@@ -11,8 +11,3 @@ steps:
       - 'apply'
       - '-f'
       - 'k8s-manifests/deployment.yaml'
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=$REGION'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=$CLUSTER_NAME'
-      - 'BLUE_GREEN_NAMESPACE=$BLUE_GREEN_NAMESPACE'
-      - 'BRANCH_NAME=$BRANCH_NAME'
