@@ -11,3 +11,5 @@ steps:
       - 'apply'
       - '-f'
       - 'k8s-manifests/deployment.yaml'
+    env:
+      - 'BRANCH_NAME=$BRANCH_NAME'
