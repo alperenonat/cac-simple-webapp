@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cac-simple-webapp-$BRANCH_NAME
+  namespace: $BLUE_GREEN_NAMESPACE
+spec:
+  replicas: 3 # Aantal replica's naar wens
+  selector:
+    matchLabels:
+      app: cac-simple-webapp
+      branch: $BRANCH_NAME
+  template:
+    metadata:
+      labels:
+        app: cac-simple-webapp
+        branch: $BRANCH_NAME
+    spec:
+      containers:
+        - name: cac-simple-webapp
+          image: gcr.io/$PROJECT_ID/cac-simple-webapp:$BRANCH_NAME
+          ports:
+            - containerPort: 3000 # De poort van je applicatie
