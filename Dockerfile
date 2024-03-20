@@ -4,6 +4,9 @@ FROM node:alpine
 # Zet de werkdirectory in binnen de container
 WORKDIR /app
 
+# Het clonen van de applicatie
+RUN git clone https://github.com/TimothySealy/cac-simple-webapp.git
+
 # Kopieer de package.json en package-lock.json bestanden en installeer de afhankelijkheden
 COPY package*.json ./
 RUN npm install
