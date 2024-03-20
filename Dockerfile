@@ -1,21 +1,20 @@
-# Gebruik een officiële Node.js-beeld als basis
-FROM node:alpine
+# Use node as base image
+FROM node:14-alpine
 
-# Zet de werkdirectory in binnen de container
-WORKDIR /app
+# Install Git
+RUN apk update && apk add git
 
-# Het clonen van de applicatie
-RUN git clone https://github.com/TimothySealy/cac-simple-webapp.git
+# Set the workdirectory
+WORKDIR /usr/src/app
 
-# Kopieer de package.json en package-lock.json bestanden en installeer de afhankelijkheden
-COPY package*.json ./
+# Het clonen van de git repository
+RUN git clone https://github.com/TimothySealy/cac-simple-webapp.git .
+
+# Install needed apps
 RUN npm install
 
-# Kopieer de rest van de broncode naar de werkdirectory in de container
-COPY . .
-
-# Expose de poort waarop de app draait
+# Expose port 3000
 EXPOSE 3000
 
-# Start de app bij het opstarten van de container
-CMD ["npm", "start"]
+# Start the app when the container starts
+CMD ["node", "app.js"]
