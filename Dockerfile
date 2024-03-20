@@ -12,6 +12,7 @@ RUN git clone https://github.com/TimothySealy/cac-simple-webapp.git .
 
 # Install needed apps
 RUN npm install
+ENV PORT 80
 
 # Expose port 3000
 EXPOSE 80
