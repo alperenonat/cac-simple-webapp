@@ -1,21 +1,21 @@
-# Use node as base image
+# Use node as base image.
 FROM node:14-alpine
 
-# Install Git
+# Installeer Git.
 RUN apk update && apk add git
 
-# Set the workdirectory
+# Set the workdirectory.
 WORKDIR /usr/src/app
 
-# Het clonen van de git repository
+# Het clonen van de git repository.
 RUN git clone https://github.com/TimothySealy/cac-simple-webapp.git .
 
-# Install needed apps
+# Installeer de nodige apps.
 RUN npm install
 ENV PORT 80
 
-# Expose port 3000
+# Expose naar poort 80.
 EXPOSE 80
 
-# Start the app when the container starts
+# Start the app wanneer de container wordt gestart.
 CMD ["node", "app.js"]
